@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import data from './constants/products.json';
 
 interface shoppingItem {
-  itemName: string,
+  name: string,
+  type: string,
+  price: number,
   itemNum: number,
 }
 
@@ -17,24 +19,39 @@ const App = () => {
       return;
     }
     const selectedProductLabel = selectedCard.closest('div')?.ariaLabel as string;
-    const itemExists = shoppingItemList.filter((item) => (item.itemName === selectedProductLabel))
+    const selectedProductInfo = products?.filter((prod) => {
+      if (prod.name === selectedProductLabel) {
+        return prod;
+      }
+    });
+    console.log(selectedProductInfo[0]);
+    const itemExists = shoppingItemList.filter((item) => (item.name === selectedProductLabel))
     if (itemExists.length === 0) {
       setShoppingItemList([
         ...shoppingItemList,
         {
-          itemName: selectedProductLabel,
+          ...selectedProductInfo[0],
           itemNum: 1,
         }
       ]);
       return;
     }
     const updatedList = shoppingItemList.map((item) => {
-      if (item.itemName === selectedProductLabel) {
+      if (item.name === selectedProductLabel) {
         item.itemNum ++
       }
       return item
     })
     setShoppingItemList(updatedList);
+  }
+
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    shoppingItemList.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.price,
+      totalPrice
+    );
+    return totalPrice;
   }
 
   return (
@@ -68,13 +85,16 @@ const App = () => {
         {shoppingItemList.map((item) => (
           <div
             className='shopping-item-wrapper'
-            key={item.itemName}
+            key={item.name}
           >
-            <h4>{item.itemName}</h4>
+            <h4>{item.name}</h4>
             <h5>{item.itemNum}</h5>
           </div>
         ))}
       </div>
+      <h1>
+        TOTAL PRICE: {calculateTotalPrice()}
+      </h1>
     </div>
   );
 }
