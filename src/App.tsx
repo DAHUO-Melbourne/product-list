@@ -86,6 +86,11 @@ const App = () => {
     setShowNumNightsInput(false);
   }
 
+  const verifyAddButtonDisabled  = () => {
+    const membershipItem = shoppingItemList.filter((item) => item.type === 'Membership')
+    return membershipItem.length > 0;
+  }
+
   return (
     <div className="App">
       <label>
@@ -116,7 +121,9 @@ const App = () => {
             <h5>
               {item.price}
             </h5>
-            <button>
+            <button
+              disabled={item.type === 'Membership' && verifyAddButtonDisabled()}
+            >
               +
             </button>
           </div>
