@@ -12,6 +12,7 @@ const App = () => {
   const products = data.products;
 
   const [shoppingItemList, setShoppingItemList] = useState<shoppingItem[]>([]);
+  const [memberShip, setMemberShip] = useState<boolean>(false);
 
   const handleProductClick = (e: React.MouseEvent) => {
     const selectedCard = e.target as HTMLElement;
@@ -24,7 +25,6 @@ const App = () => {
         return prod;
       }
     });
-    console.log(selectedProductInfo[0]);
     const itemExists = shoppingItemList.filter((item) => (item.name === selectedProductLabel))
     if (itemExists.length === 0) {
       setShoppingItemList([
@@ -47,12 +47,24 @@ const App = () => {
 
   const calculateTotalPrice = () => {
     let initPrice = 0;
-    console.log(shoppingItemList);
     const totalPrice = shoppingItemList.reduce(
       (accumulator, currentValue) => accumulator + currentValue.price * currentValue.itemNum,
       initPrice
     );
     return totalPrice;
+  }
+
+  const calculateTotalDiscount = () => {
+    let totalPrice = calculateTotalPrice();
+    let totalDiscount;
+    if(totalPrice < 500) {
+      totalDiscount =  0
+    } else if (totalPrice >= 500 && totalPrice < 1000) {
+      totalDiscount = 5
+    } else {
+      totalDiscount = 10;
+    }
+    return memberShip ? totalDiscount + 10 : totalDiscount;
   }
 
   return (
@@ -95,6 +107,9 @@ const App = () => {
       </div>
       <h1>
         TOTAL PRICE: {calculateTotalPrice()}
+      </h1>
+      <h1>
+        TOTAL DISCOUNT: {calculateTotalDiscount()}%
       </h1>
     </div>
   );
