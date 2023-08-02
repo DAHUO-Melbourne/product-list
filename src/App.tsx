@@ -87,6 +87,9 @@ const App = () => {
   }
 
   const verifyAddButtonDisabled  = () => {
+    if (memberLoggedIn) {
+      return true;
+    }
     const membershipItem = shoppingItemList.filter((item) => item.type === 'Membership')
     return membershipItem.length > 0;
   }

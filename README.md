@@ -42,3 +42,4 @@
 - the user can input the nights num and click on 'apply', then the price and discount would be updated:
 ![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/click-apply.png)
 
+6. BONUS: add disabled logic if user has already added membership: make sure the user won't Add membership repeatedly:
