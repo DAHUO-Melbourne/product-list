@@ -15,3 +15,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.item-num {
+  cursor: pointer;  
+}

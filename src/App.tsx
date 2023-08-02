@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import data from './constants/products.json';
+import { numRgex } from './constants/tools';
 
 interface shoppingItem {
   name: string,
@@ -13,7 +14,10 @@ const App = () => {
 
   const [shoppingItemList, setShoppingItemList] = useState<shoppingItem[]>([]);
   const [memberShip, setMemberShip] = useState<boolean>(false);
-  const [memberLoggedIn, setMemberLoggedIn] = useState<boolean>(false)
+  const [memberLoggedIn, setMemberLoggedIn] = useState<boolean>(false);
+  const [showNumNightsInput, setShowNumNightsInput] = useState<boolean>(false);
+  const [currentSelectedShoppingItem, seCcurrentSelectedShoppingItem] = useState<string>('');
+  const [numOfNights, setNumOfNights] = useState<string>('1');
 
   const handleProductClick = (e: React.MouseEvent) => {
     const selectedCard = e.target as HTMLElement;
@@ -115,10 +119,32 @@ const App = () => {
             key={item.name}
           >
             <h4>{item.name}</h4>
-            <h5>{item.itemNum}</h5>
+            <div>
+              <h5
+                className='item-num'
+                onClick={() => {
+                  setNumOfNights('1');
+                  seCcurrentSelectedShoppingItem(item.name);
+                  setShowNumNightsInput(true)
+                }}
+              >
+                {item.itemNum}
+              </h5>
+            </div>
           </div>
         ))}
       </div>
+      {showNumNightsInput && (
+        <label>
+          <input
+            value={numOfNights}
+            onChange={(e) => {
+              setNumOfNights(e.target.value.replace(numRgex, ''));
+            }}
+          />
+          {currentSelectedShoppingItem}
+        </label>
+      )}
       <h1>
         TOTAL PRICE: {calculateTotalPrice()}
       </h1>
