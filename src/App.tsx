@@ -18,13 +18,23 @@ const App = () => {
     }
     const selectedProductLabel = selectedCard.closest('div')?.ariaLabel as string;
     const itemExists = shoppingItemList.filter((item) => (item.itemName === selectedProductLabel))
-    itemExists.length === 0 && setShoppingItemList([
-      ...shoppingItemList,
-      {
-        itemName: selectedProductLabel,
-        itemNum: 1,
+    if (itemExists.length === 0) {
+      setShoppingItemList([
+        ...shoppingItemList,
+        {
+          itemName: selectedProductLabel,
+          itemNum: 1,
+        }
+      ]);
+      return;
+    }
+    const updatedList = shoppingItemList.map((item) => {
+      if (item.itemName === selectedProductLabel) {
+        item.itemNum ++
       }
-    ]);
+      return item
+    })
+    setShoppingItemList(updatedList);
   }
 
   return (
