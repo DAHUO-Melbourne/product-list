@@ -143,6 +143,9 @@ const App = () => {
               <h5
                 className='item-num'
                 onClick={() => {
+                  if (item.type === 'Membership') {
+                    return
+                  }
                   setNumOfNights('1');
                   seCcurrentSelectedShoppingItem(item.name);
                   setShowNumNightsInput(true)
