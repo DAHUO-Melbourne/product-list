@@ -46,10 +46,11 @@ const App = () => {
   }
 
   const calculateTotalPrice = () => {
-    let totalPrice = 0;
-    shoppingItemList.reduce(
-      (accumulator, currentValue) => accumulator + currentValue.price,
-      totalPrice
+    let initPrice = 0;
+    console.log(shoppingItemList);
+    const totalPrice = shoppingItemList.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.price * currentValue.itemNum,
+      initPrice
     );
     return totalPrice;
   }
