@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import data from './constants/products.json';
 
-function App() {
+const App = () => {
+  const products = data.products;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      {products.map((item) => (
+        <div
+          key={item.name}
+          className='product-item'
         >
-          Learn React
-        </a>
-      </header>
+          <h1>
+            {item.name}
+          </h1>
+          <h3>
+            {item.type}
+          </h3>
+          <h5>
+            {item.price}
+          </h5>
+        </div>
+      ))}
     </div>
   );
 }
