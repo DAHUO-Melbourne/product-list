@@ -1,10 +1,15 @@
 import React, {useState} from 'react';
 import data from './constants/products.json';
 
+interface shoppingItem {
+  itemName: string,
+  itemNum: number,
+}
+
 const App = () => {
   const products = data.products;
 
-  const [shoppingItemList, setShoppingItemList] = useState<string[]>([]);
+  const [shoppingItemList, setShoppingItemList] = useState<shoppingItem[]>([]);
 
   const handleProductClick = (e: React.MouseEvent) => {
     const selectedCard = e.target as HTMLElement;
@@ -12,14 +17,14 @@ const App = () => {
       return;
     }
     const selectedProductLabel = selectedCard.closest('div')?.ariaLabel as string;
-    setShoppingItemList([
+    const itemExists = shoppingItemList.filter((item) => (item.itemName === selectedProductLabel))
+    itemExists.length === 0 && setShoppingItemList([
       ...shoppingItemList,
-      selectedProductLabel
-    ])
-  }
-
-  const calItemNum = (item: string) => {
-    return 1;
+      {
+        itemName: selectedProductLabel,
+        itemNum: 1,
+      }
+    ]);
   }
 
   return (
@@ -51,9 +56,12 @@ const App = () => {
       </h1>
       <div>
         {shoppingItemList.map((item) => (
-          <div className='shopping-item-wrapper'>
-            <h4>{item}</h4>
-            <h5>{calItemNum(item)}</h5>
+          <div
+            className='shopping-item-wrapper'
+            key={item.itemName}
+          >
+            <h4>{item.itemName}</h4>
+            <h5>{item.itemNum}</h5>
           </div>
         ))}
       </div>
