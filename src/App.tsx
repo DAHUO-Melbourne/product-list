@@ -20,6 +20,7 @@ const App = () => {
       return;
     }
     const selectedProductLabel = selectedCard.closest('div')?.ariaLabel as string;
+    selectedProductLabel === 'Membership' && setMemberShip(true);
     const selectedProductInfo = products?.filter((prod) => {
       if (prod.name === selectedProductLabel) {
         return prod;
