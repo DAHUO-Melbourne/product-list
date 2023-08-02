@@ -42,4 +42,10 @@
 - the user can input the nights num and click on 'apply', then the price and discount would be updated:
 ![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/click-apply.png)
 
-6. BONUS: add disabled logic if user has already added membership: make sure the user won't Add membership repeatedly:
+6. BONUS: add disabled logic if user has already added membership or logged in as member: make sure the user won't Add membership repeatedly:
+
+- make sure user won't add more than one membership in shopping cart
+![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/membership-disabled1.png)
+
+- make sure user won't add membership into shopping cart if user has logged it as a membership:
+![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/membership-disabled2.png)
