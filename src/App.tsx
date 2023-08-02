@@ -73,6 +73,16 @@ const App = () => {
     return memberShip || memberLoggedIn ? totalDiscount + 10 : totalDiscount;
   }
 
+  const handleApplyNumOfNights = () => {
+    const updatedList = shoppingItemList.map((item) => {
+      if (item.name === currentSelectedShoppingItem) {
+        item.itemNum = parseInt(numOfNights);
+      }
+      return item
+    })
+    setShoppingItemList(updatedList);
+  }
+
   return (
     <div className="App">
       <label>
@@ -135,15 +145,22 @@ const App = () => {
         ))}
       </div>
       {showNumNightsInput && (
-        <label>
-          <input
-            value={numOfNights}
-            onChange={(e) => {
-              setNumOfNights(e.target.value.replace(numRgex, ''));
-            }}
-          />
-          {currentSelectedShoppingItem}
-        </label>
+        <div>
+          <label>
+            <input
+              value={numOfNights}
+              onChange={(e) => {
+                setNumOfNights(e.target.value.replace(numRgex, ''));
+              }}
+            />
+            {currentSelectedShoppingItem}
+          </label>
+          <button
+            onClick={handleApplyNumOfNights}
+          >
+            apply
+          </button>
+        </div>
       )}
       <h1>
         TOTAL PRICE: {calculateTotalPrice()}
