@@ -4,3 +4,13 @@
 
 # result:
 1. show the list of the available products:
+![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/list-of-products.png)
+
+2. add products to their shopping cart:
+*click on + button to add items*:
+![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/add-prod-step1.png)
+
+*user could add more than one item by multiple clicks the + button of the same shopping item*:
+![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/add-prod-step2.png)
+
+3. The user can see the total value of their shopping cart:
