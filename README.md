@@ -34,8 +34,11 @@
 
 5. The user can specify a number of nights when adding accommodation to cart:
 - the user can click on the number of the item in the shopping cart:
+![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/click-on-num-in-shp-ct.png)
 
 - then an input form would be shown below the shopping cart for users to specify the num of nights:
+![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/show-input.png)
 
 - the user can input the nights num and click on 'apply', then the price and discount would be updated:
+![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/click-apply.png)
 
