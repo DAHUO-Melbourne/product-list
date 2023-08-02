@@ -18,9 +18,15 @@
 
 4. The total incorporates the applicable discounts:
 *more than 500 && NO membership*:
+![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/more-than-500-NO-membership.png)
 
 *more than 1000 && NO membership*:
+![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/more-than-1000-NO-membership.png)
 
 *more than 500 && APPLY membership*:
+![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/more-than-500-APPLY-membership.png)
 
 *more than 1000 && APPLY membership*:
+![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/more-than-1000-APPLY-membership.png)
+
+*u can also apply membership by check the membership checkbox(this is to simulate the user has logged in as a member)*:
