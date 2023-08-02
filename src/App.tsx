@@ -13,6 +13,7 @@ const App = () => {
 
   const [shoppingItemList, setShoppingItemList] = useState<shoppingItem[]>([]);
   const [memberShip, setMemberShip] = useState<boolean>(false);
+  const [memberLoggedIn, setMemberLoggedIn] = useState<boolean>(false)
 
   const handleProductClick = (e: React.MouseEvent) => {
     const selectedCard = e.target as HTMLElement;
@@ -65,11 +66,23 @@ const App = () => {
     } else {
       totalDiscount = 10;
     }
-    return memberShip ? totalDiscount + 10 : totalDiscount;
+    return memberShip || memberLoggedIn ? totalDiscount + 10 : totalDiscount;
   }
 
   return (
     <div className="App">
+      <label>
+        <input
+          type="checkbox"
+          id="member"
+          name="member"
+          checked={memberLoggedIn}
+          onChange={() => {
+            setMemberLoggedIn((memberLoggedIn) => {return !memberLoggedIn})
+          }}
+        />
+        membership logged-in
+      </label>
       <div onClick={handleProductClick}>
         {products.map((item) => (
           <div
