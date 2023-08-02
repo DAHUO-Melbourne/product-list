@@ -81,6 +81,9 @@ const App = () => {
       return item
     })
     setShoppingItemList(updatedList);
+    setNumOfNights('1');
+    seCcurrentSelectedShoppingItem('');
+    setShowNumNightsInput(false);
   }
 
   return (
