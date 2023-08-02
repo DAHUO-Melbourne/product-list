@@ -18,6 +18,10 @@ const App = () => {
     ])
   }
 
+  const calItemNum = (item: string) => {
+    return 1;
+  }
+
   return (
     <div className="App">
       <div onClick={handleProductClick}>
@@ -27,9 +31,9 @@ const App = () => {
             className='product-item'
             aria-label={item.name}
           >
-            <h1>
+            <h2>
               {item.name}
-            </h1>
+            </h2>
             <h3>
               {item.type}
             </h3>
@@ -39,6 +43,17 @@ const App = () => {
             <button>
               +
             </button>
+          </div>
+        ))}
+      </div>
+      <h1>
+        shopping cart info
+      </h1>
+      <div>
+        {shoppingItemList.map((item) => (
+          <div className='shopping-item-wrapper'>
+            <h4>{item}</h4>
+            <h5>{calItemNum(item)}</h5>
           </div>
         ))}
       </div>
