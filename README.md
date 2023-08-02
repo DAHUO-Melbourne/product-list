@@ -14,3 +14,13 @@
 ![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/add-prod-step2.png)
 
 3. The user can see the total value of their shopping cart:
+![image](https://github.com/DAHUO-Melbourne/product-list/blob/main/public/assets/total-price.png)
+
+4. The total incorporates the applicable discounts:
+*more than 500 && NO membership*:
+
+*more than 1000 && NO membership*:
+
+*more than 500 && APPLY membership*:
+
+*more than 1000 && APPLY membership*:
